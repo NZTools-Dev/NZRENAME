@@ -36,11 +36,8 @@ This is a **portable** application with no complex installation required.
 
 ## 📌 Notices & Tips
 
-* **Shell Context Menu:** For the portable version, some additional configuration may be required to enable the right-click menu.
-  * 💡 **Win 11 Tip:** Simply `Shift + Right-click` on selected files to access the menu easily.
+* **Shell Context Menu:** The Windows right-click shell integration is supported in the **Installer version**. If you want to use the right-click menu, please use the installer package. (The Portable version does not write to system registries.)
 * **Language Setting:** If the language does not default to English, you can change it via the settings menu (`Settings` -> `English`).
-
----
 
 ## ⌨️ Tag Cheat Sheet
 
@@ -71,8 +68,7 @@ This is a **portable** application with no complex installation required.
 * **유저 맞춤형 DB 확장:** 텍스트 기반으로 나만의 커스텀 장소 데이터를 쉽게 추가하고 공유할 수 있습니다.
 
 ### 📌 꼭 확인해주세요!
-* **우클릭 메뉴:** 포터블 버전 특성상 `Shift + 우클릭`을 하시면 편리하게 이용하실 수 있습니다.
+* **우클릭 쉘 메뉴 안내:** 우클릭 메뉴 연동 기능은 **설치 버전(Installer)**에서 지원됩니다. 탐색기 우클릭 기능을 편하게 쓰고 싶다면 설치 버전을 이용해 주세요! (포터블 버전은 시스템 레지스트리를 건드리지 않습니다.)
 * **라이선스:** 본 프로젝트는 자유롭게 사용할 수 있는 무료 오프라인 유틸리티입니다.
-
 ---
 **Contact: https://nztool.blogspot.com/
