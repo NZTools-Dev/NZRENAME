@@ -32,12 +32,40 @@ This is a **portable** application with no complex installation required.
 2. Enter your desired tag pattern in the input field (e.g., `[<P_CITY2>_<P_PLACE>]_<P_DATE>-<N>`).
 3. Preview the changes and click **[Rename]**.
 
+## 
 ---
 
 ## 📌 Notices & Tips
 
 * **Shell Context Menu:** The Windows right-click shell integration is supported in the **Installer version**. If you want to use the right-click menu, please use the installer package. (The Portable version does not write to system registries.)
 * **Language Setting:** If the language does not default to English, you can change it via the settings menu (`Settings` -> `English`).
+
+---
+
+## Command Catalog – NZRENAME Context‑Menu (from `NZRENAME_CM.DLL`)
+
+| ID / Constant | Korean Label (Menu Text) | English Label (Menu Text) | When It Appears | Action |
+|---|---|---|---|---|
+| `CMD_MATCH` | **같은 이름으로** | *Match File Names* | Exactly **2 files** selected (different extensions) | Renames the second file so its base name matches the first file. |
+| `CMD_RENAME` | **NZRENAME 열기** | *Open NZRENAME* | Any selection (files, folders, or mixed) | Launches `NzRename.exe` (or sends a WM_COPYDATA message to a running NZR UI) to open the full rename dialog. |
+| `CMD_GROUP` | **폴더 만들고 넣기** | *Group into Folder* | **≥ 2 items** selected | Creates a new folder (named after the first selected file) and moves all selected items into it. |
+| `CMD_SWAP` | **두 파일 이름 맞교환** | *Swap File Names* | Exactly **2 files** selected | Swaps the names of the two files safely using a temporary file. |
+| `CMD_EXPORT` | **파일 목록 내보내기** | *Export File List* | Any selection | Shows a Save dialog and writes a CSV (or plain‑text) file containing **File Name**, **Extension**, **Folder Path** of each selected item. |
+| `CMD_OPEN_FILES` | **폴더 안 파일 이름 바꾸기** | *Rename Files in Folder* | **Folder only** selected (no files) | Calls `ExecuteRename(1)` → renames every file **inside** the selected folder (no sub‑folders). |
+| `CMD_OPEN_FILES_REC` | **폴더 안 파일 이름 바꾸기 (하위 포함)** | *Rename Files in Folder (Include Subfolders)* | **Folder only** selected | Calls `ExecuteRename(2)` → same as above but recurses into all sub‑folders. |
+| `CMD_OPEN_FOLDERS` | **선택한 폴더 이름 바꾸기** | *Rename Selected Folders* | **Folder only** selected | Calls `ExecuteRename(3)` → renames the selected folders themselves. |
+| `CMD_FAST_BASE + i` | **빠른 이름 바꾸기** (i‑th favorite) | *Quick Rename* (i‑th favorite) | Any selection **and** `FFavList` (Favorites) is non‑empty | Executes a user‑defined fast preset (`NzrFast.exe`) on the selected items (file mode). |
+| `CMD_FAST_FOLDER_BASE + i` | **빠른 이름 바꾸기 (폴더)** (i‑th favorite) | *Quick Rename (Folder)* (i‑th favorite) | **Folder only** selected **and** favorites exist | Executes a fast preset in **folder mode** (`-fmode 1/2` flag is added). |
+
+### Notes  
+
+* The menu is built under a top‑level **“NZRENAME”** submenu.  
+* Language (Korean / English) is chosen at runtime from `settings.ini` (`FIsEnglish`).  
+* Favorites are read from the **`[Favorites]`** section of `settings.ini` and appear as the first submenu items when present.  
+
+
+
+---
 
 ## ⌨️ Tag Cheat Sheet
 
