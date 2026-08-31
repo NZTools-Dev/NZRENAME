@@ -42,28 +42,30 @@ This is a **portable** application with no complex installation required.
 
 ---
 
-## Command Catalog – NZRENAME Context‑Menu (from `NZRENAME_CM.DLL`)
+## 📂 NZRENAME Explorer Context‑Menu – What Each Item Does  
 
-| ID / Constant | Korean Label (Menu Text) | English Label (Menu Text) | When It Appears | Action |
-|---|---|---|---|---|
-| `CMD_MATCH` | **같은 이름으로** | *Match File Names* | Exactly **2 files** selected (different extensions) | Renames the second file so its base name matches the first file. |
-| `CMD_RENAME` | **NZRENAME 열기** | *Open NZRENAME* | Any selection (files, folders, or mixed) | Launches `NzRename.exe` (or sends a WM_COPYDATA message to a running NZR UI) to open the full rename dialog. |
-| `CMD_GROUP` | **폴더 만들고 넣기** | *Group into Folder* | **≥ 2 items** selected | Creates a new folder (named after the first selected file) and moves all selected items into it. |
-| `CMD_SWAP` | **두 파일 이름 맞교환** | *Swap File Names* | Exactly **2 files** selected | Swaps the names of the two files safely using a temporary file. |
-| `CMD_EXPORT` | **파일 목록 내보내기** | *Export File List* | Any selection | Shows a Save dialog and writes a CSV (or plain‑text) file containing **File Name**, **Extension**, **Folder Path** of each selected item. |
-| `CMD_OPEN_FILES` | **폴더 안 파일 이름 바꾸기** | *Rename Files in Folder* | **Folder only** selected (no files) | Calls `ExecuteRename(1)` → renames every file **inside** the selected folder (no sub‑folders). |
-| `CMD_OPEN_FILES_REC` | **폴더 안 파일 이름 바꾸기 (하위 포함)** | *Rename Files in Folder (Include Subfolders)* | **Folder only** selected | Calls `ExecuteRename(2)` → same as above but recurses into all sub‑folders. |
-| `CMD_OPEN_FOLDERS` | **선택한 폴더 이름 바꾸기** | *Rename Selected Folders* | **Folder only** selected | Calls `ExecuteRename(3)` → renames the selected folders themselves. |
-| `CMD_FAST_BASE + i` | **빠른 이름 바꾸기** (i‑th favorite) | *Quick Rename* (i‑th favorite) | Any selection **and** `FFavList` (Favorites) is non‑empty | Executes a user‑defined fast preset (`NzrFast.exe`) on the selected items (file mode). |
-| `CMD_FAST_FOLDER_BASE + i` | **빠른 이름 바꾸기 (폴더)** (i‑th favorite) | *Quick Rename (Folder)* (i‑th favorite) | **Folder only** selected **and** favorites exist | Executes a fast preset in **folder mode** (`-fmode 1/2` flag is added). |
+When you right‑click a file or folder in Windows Explorer, the **“NZRENAME”** submenu appears. Below is a plain‑language guide for every option you’ll see.  
 
-### Notes  
+| Menu Item (Korean) | Menu Item (English) | When It Shows Up | What It Does (in simple terms) |
+|-------------------|---------------------|------------------|--------------------------------|
+| **NZRENAME 열기** | **Open NZRENAME** | Any selection (file, folder, or a mix) | Opens the full NZRENAME program with the selected items already loaded, so you can rename them however you like. |
+| **두 파일 이름 맞교환** | **Swap File Names** | Exactly two files are selected | Exchanges the names of the two files. The contents stay the same, only the file names are swapped. |
+| **같은 이름으로** | **Match File Names** | Exactly two files with *different* extensions are selected | Renames the second file so its base name matches the first file (extension stays unchanged). |
+| **파일 목록 내보내기** | **Export File List** | Any selection | Saves a list of the selected items to a CSV or text file (you choose the location). Useful for keeping a record or processing the list elsewhere. |
+| **폴더 안 파일 이름 바꾸기** | **Rename Files in Folder** | A *single* folder is selected (no files) | Opens NZRENAME and lets you rename every file **inside** that folder (sub‑folders are ignored). |
+| **폴더 안 파일 이름 바꾸기 (하위 포함)** | **Rename Files in Folder (Include Subfolders)** | A *single* folder is selected | Same as above, but also renames files that are inside any sub‑folders. |
+| **선택한 폴더 이름 바꾸기** | **Rename Selected Folders** | A *single* folder is selected | Lets you rename the folder itself (not the files inside it). |
+| **폴더 만들고 넣기** | **Group into Folder** | Two or more items (files and/or folders) are selected | Creates a new folder (named after the first selected file) and moves all selected items into that folder. |
+| **빠른 이름 바꾸기** (Favorite 1, 2, …) | **Quick Rename** (your saved presets) | Any selection *and* you have saved “Favorites” in the settings | Runs a pre‑configured rename preset instantly, without opening the full UI. Great for repetitive tasks. |
+| **빠른 이름 바꾸기 (폴더)** (Favorite 1, 2, …) | **Quick Rename (Folder)** (your saved presets) | A folder is selected *and* you have saved “Favorites” | Same as the “Quick Rename” above but works in **folder mode** (asks whether to include sub‑folders). |
 
-* The menu is built under a top‑level **“NZRENAME”** submenu.  
-* Language (Korean / English) is chosen at runtime from `settings.ini` (`FIsEnglish`).  
-* Favorites are read from the **`[Favorites]`** section of `settings.ini` and appear as the first submenu items when present.  
+### How to Use the Menu
 
+1. **Select what you want to work on** – one file, multiple files, one folder, or a mix.  
+2. **Right‑click** → choose **`NZRENAME`** → pick the desired command.  
+3. Follow any small prompts (e.g., “Include sub‑folders?” for quick‑rename on a folder).  
 
+That’s it! The menu gives you fast access to the most common NZRENAME actions directly from Explorer.  
 
 ---
 
